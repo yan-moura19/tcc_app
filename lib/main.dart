@@ -40,11 +40,9 @@ class _MainScreenState extends State<MainScreen> {
                   Image.network(
                  'https://cdn-icons-png.flaticon.com/512/8336/8336946.png',
                   fit: BoxFit.contain,
-                  height: 40,
+                  height: 25,
               ),
-              
             ],
-
           ),
         
         title: Text("Tcc APP"),
@@ -61,7 +59,7 @@ class _MainScreenState extends State<MainScreen> {
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         
-        showSelectedLabels: false, // Esconde o rótulo do item selecionado
+        showSelectedLabels: false, 
         showUnselectedLabels: true,
         backgroundColor: Color(0xFF001dcd),
         selectedItemColor: Colors.red,
