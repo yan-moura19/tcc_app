@@ -1,76 +1,110 @@
-import 'package:flutter/material.dart';
+import 'dart:html';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:flutter/material.dart';
+import 'package:tcc_app/pages/home_page.dart';
+import 'package:tcc_app/pages/categorias_page.dart';
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MainScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  
-
-  final String title;
-
+class MainScreen extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MainScreenState extends State<MainScreen> {
+  int currentIndex = 0;
 
-  void _incrementCounter() {
-    setState(() {
-     
-      _counter++;
-    });
-  }
+  final List<Widget> screens = [
+    Screen1(),
+    Screen2(),
+    Screen3(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF1c1f30),
+        leading: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                  Image.network(
+                 'https://cdn-icons-png.flaticon.com/512/8336/8336946.png',
+                  fit: BoxFit.contain,
+                  height: 40,
+              ),
+              
+            ],
+
+          ),
         
-        title: Text(widget.title),
-      ),
-      body: Center(
-        
-        child: Column(
-         
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+        title: Text("Tcc APP"),
+        actions: [
+            if (currentIndex == 2)
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {
+                  print(currentIndex);
+                },
+              ),
           ],
-        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: screens[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        
+        showSelectedLabels: false, // Esconde o rótulo do item selecionado
+        showUnselectedLabels: true,
+        backgroundColor: Color(0xFF151721),
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.white,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.view_list_outlined,
+            ),
+            label: 'Categorias',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+            Icons.perm_identity,
+          ),
+            label: 'Perfil',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+class Screen3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Tela 3 - Perfil'),
     );
   }
 }
