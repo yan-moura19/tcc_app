@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:tcc_app/pages/home_page.dart';
 import 'package:tcc_app/pages/categorias_page.dart';
+import 'package:tcc_app/pages/perfil_page.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -32,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1c1f30),
+        backgroundColor: Color(0xFF001dcd),
         leading: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -62,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
         
         showSelectedLabels: false, // Esconde o rótulo do item selecionado
         showUnselectedLabels: true,
-        backgroundColor: Color(0xFF151721),
+        backgroundColor: Color(0xFF001dcd),
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
@@ -100,11 +101,3 @@ class _MainScreenState extends State<MainScreen> {
 
 
 
-class Screen3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Tela 3 - Perfil'),
-    );
-  }
-}
