@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tcc_app/pages/home_page.dart';
 import 'package:tcc_app/pages/categorias_page.dart';
 import 'package:tcc_app/pages/perfil_page.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -32,34 +33,34 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF001dcd),
-        leading: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                  Image.network(
-                 'https://cdn-icons-png.flaticon.com/512/8336/8336946.png',
-                  fit: BoxFit.contain,
-                  height: 25,
-              ),
-            ],
-          ),
-        
-        title: Text("Tcc APP"),
-        actions: [
-            if (currentIndex == 2)
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  print(currentIndex);
-                },
-              ),
-          ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Color(0xFF001dcd),
+
+      //   leading: Row(
+      //         mainAxisAlignment: MainAxisAlignment.center,
+      //         children: [
+      //             Image.network(
+      //            'https://cdn-icons-png.flaticon.com/512/8336/8336946.png',
+      //             fit: BoxFit.contain,
+      //             height: 25,
+      //         ),
+      //       ],
+      //     ),
+
+      //   title: Text("Tcc APP"),
+      //   actions: [
+      //       if (currentIndex == 2)
+      //         IconButton(
+      //           icon: Icon(Icons.search),
+      //           onPressed: () {
+      //             print(currentIndex);
+      //           },
+      //         ),
+      //     ],
+      // ),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        
-        showSelectedLabels: false, 
+        showSelectedLabels: false,
         showUnselectedLabels: true,
         backgroundColor: Color(0xFF001dcd),
         selectedItemColor: Colors.red,
@@ -85,8 +86,8 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-            Icons.perm_identity,
-          ),
+              Icons.perm_identity,
+            ),
             label: 'Perfil',
           ),
         ],
@@ -94,8 +95,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
-
-
-
-
