@@ -38,87 +38,121 @@ class _CustomFormState extends State<CustomForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
-      child: ListView(
-        children: [
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Nome'),
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Por favor, insira um nome';
-              }
-              return null;
-            },
-            onSaved: (value) => _nome = value!,
+        key: _formKey,
+        child: Container(
+          color: Colors.white,
+          constraints: BoxConstraints(
+              maxWidth: 400), // Ajuste a largura máxima conforme necessário
+          child: ListView(
+            children: [
+              SizedBox(width: 5, height: 15),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Nome',
+                    border: UnderlineInputBorder(),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12)),
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Por favor, insira um nome';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _nome = value!,
+              ),
+              SizedBox(width: 5, height: 15),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Usuário',
+                    border: UnderlineInputBorder(),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12)),
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Por favor, insira um nome de usuário';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _usuario = value!,
+              ),
+              SizedBox(width: 5, height: 15),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Senha',
+                    border: UnderlineInputBorder(),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12)),
+                obscureText: true,
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Por favor, insira uma senha';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _senha = value!,
+              ),
+              SizedBox(width: 5, height: 15),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Imagem',
+                    border: UnderlineInputBorder(),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 12)),
+                validator: (value) {
+                  if (value?.isEmpty ?? true) {
+                    return 'Por favor, insira uma URL de imagem';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _imagem = value!,
+              ),
+              SizedBox(width: 5, height: 15),
+              DropDownMultiSelect(
+                options: categories,
+                selectedValues: _categorias,
+                onChanged: (value) {
+                  setState(() {
+                    _categorias = value;
+                  });
+                  print('you have selected $_categorias fruits.');
+                },
+              ),
+              SizedBox(width: 5, height: 15),
+              CheckboxListTile(
+                title: Text('É Parceiro?'),
+                value: _isParceiro ?? false,
+                onChanged: (value) {
+                  setState(() {
+                    _isParceiro = value!;
+                  });
+                },
+              ),
+              SizedBox(width: 5, height: 15),
+              if (_isParceiro ?? true)
+                TextFormField(
+                  decoration: InputDecoration(
+                      labelText: 'Imagem',
+                      border: UnderlineInputBorder(),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 12)),
+                  validator: (value) {
+                    if (value?.isEmpty ?? true) {
+                      return 'Ual';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => _imagem = value!,
+                ),
+              SizedBox(width: 5, height: 15),
+              ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                ),
+                onPressed: _submitForm,
+                child: Text('Enviar'),
+              ),
+            ],
           ),
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Usuário'),
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Por favor, insira um nome de usuário';
-              }
-              return null;
-            },
-            onSaved: (value) => _usuario = value!,
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Senha'),
-            obscureText: true,
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Por favor, insira uma senha';
-              }
-              return null;
-            },
-            onSaved: (value) => _senha = value!,
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Imagem'),
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Por favor, insira uma URL de imagem';
-              }
-              return null;
-            },
-            onSaved: (value) => _imagem = value!,
-          ),
-          DropDownMultiSelect(
-            options: categories,
-            selectedValues: _categorias,
-            onChanged: (value) {
-              setState(() {
-                _categorias = value;
-              });
-              print('you have selected $_categorias fruits.');
-            },
-          ),
-          CheckboxListTile(
-            title: Text('É Parceiro?'),
-            value: _isParceiro ?? false,
-            onChanged: (value) {
-              setState(() {
-                _isParceiro = value!;
-              });
-            },
-          ),
-          if (_isParceiro ?? true)
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Imagem'),
-              validator: (value) {
-                if (value?.isEmpty ?? true) {
-                  return 'Ual';
-                }
-                return null;
-              },
-              onSaved: (value) => _imagem = value!,
-            ),
-          ElevatedButton(
-            onPressed: _submitForm,
-            child: Text('Enviar'),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 
   void _submitForm() {
