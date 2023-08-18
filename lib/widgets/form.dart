@@ -34,6 +34,19 @@ class _CustomFormState extends State<CustomForm> {
     'Automóveis',
     'Brinquedos',
   ];
+  void limparLista() {
+    setState(() {
+      _nome = ' ';
+      _usuario = ' ';
+      _senha = ' ';
+      _categorias.clear();
+      _topCategorias.clear();
+      _imagem = '';
+      _teste = '';
+      _isParceiro = false;
+      _preferencias.clear();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +182,9 @@ class _CustomFormState extends State<CustomForm> {
         'isParceiro': _isParceiro,
         'preferencias': _preferencias,
       };
+
       widget.onSubmit(formData);
+      limparLista();
     }
   }
 }

@@ -11,13 +11,13 @@ class Screen3 extends StatelessWidget {
     return Center(
       child: CustomForm(onSubmit: (FormData) {
         print(FormData);
-        postCompra(FormData);
+        postUsuario(FormData);
       }),
     );
   }
 }
 
-postCompra(bodyPost) async {
+postUsuario(bodyPost) async {
   var url = Uri.parse('http://localhost:3000/api/usuario');
   final encoding = Encoding.getByName('utf-8');
   final headers = <String, String>{
