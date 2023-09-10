@@ -19,19 +19,14 @@ class _ListPerfilVerticalState extends State<ListPerfilVertical> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
-              scrollDirection: Axis.horizontal,
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 usuarios = snapshot.data!;
-
                 var usuario = snapshot.data![index];
                 return Card(
                     child: ListTile(
                   onTap: (() {
-                    // print(carrinho.length);
                   }),
-                  // leading: CircleAvatar(
-                  //     backgroundImage: NetworkImage(usuario['imagem'])),
                   title: Text(usuario['nome']),
                   subtitle: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
