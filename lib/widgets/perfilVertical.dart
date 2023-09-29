@@ -19,14 +19,17 @@ class _ListPerfilVerticalState extends State<ListPerfilVertical> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 usuarios = snapshot.data!;
                 var usuario = snapshot.data![index];
-                return Card(
+                return Card(shadowColor: Colors.black12,
                     child: ListTile(
                   onTap: (() {
                   }),
+                  
                   title: Text(usuario['nome']),
                   subtitle: Row(
                     mainAxisAlignment: MainAxisAlignment.end,

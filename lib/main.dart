@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:tcc_app/pages/homeList_page.dart';
 import 'package:tcc_app/pages/home_page.dart';
 import 'package:tcc_app/pages/categorias_page.dart';
 import 'package:tcc_app/pages/perfil_page.dart';
@@ -28,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     Screen1(),
     Screen2(),
     Screen3(),
+    Screen4()
   ];
 
   @override
@@ -89,6 +91,12 @@ class _MainScreenState extends State<MainScreen> {
               Icons.perm_identity,
             ),
             label: 'Perfil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+            ),
+            label: 'Home2',
           ),
         ],
       ),
