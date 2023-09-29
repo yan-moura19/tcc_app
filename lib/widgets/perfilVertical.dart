@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class ListPerfilVertical extends StatefulWidget {
-  const ListPerfilVertical({super.key});
+  const ListPerfilVertical({super.key ,required this.onSubmit});
+  final Function(Map<String, dynamic>) onSubmit;
 
   @override
   State<ListPerfilVertical> createState() => _ListPerfilVerticalState();
@@ -28,6 +29,7 @@ class _ListPerfilVerticalState extends State<ListPerfilVertical> {
                 return Card(shadowColor: Colors.black12,
                     child: ListTile(
                   onTap: (() {
+                    widget.onSubmit(usuario);
                   }),
                   
                   title: Text(usuario['nome']),

@@ -23,7 +23,29 @@ class Screen4 extends StatelessWidget {
               new Text("Em alta",
                 textAlign: TextAlign.right,),
               new Flexible(
-                child: ListPerfilVertical(),
+                child: ListPerfilVertical(onSubmit: (p0) => {
+                  showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return SizedBox(
+                height: 200,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Text('Modal BottomSheet'),
+                      ElevatedButton(
+                        child: const Text('Close BottomSheet'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          )
+                },),
               ),
             ],
           ),
