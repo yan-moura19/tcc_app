@@ -21,35 +21,29 @@ class _ModalWidgetState extends State<ModalWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: Container(
-        height: 200,
+      body: SizedBox(
+        height: double.infinity,
+       
         
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Card(
+                  child: Card(
                         
                         child: ListTile(
                         title: Text('${widget.objeto['nome']}'),
                         leading: Text("IMG"),
-                        subtitle: Text("Alguns dados da loja"),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                          Text("Alguns dados da loja"),
+                          Text("Alguns dados da loja"),
+                          Text("Alguns dados da loja")
+                        ]),
                         trailing: TextButton.icon(onPressed: (){print("link/${widget.objeto['parceria']['usuario']}");}, icon:Icon(
                       FontAwesomeIcons.instagram,
-                      size: 20,
+                      size: 40,
                       
                     ), label: Text("Visitar Perfil"),)
                       )),
-                      
-                      
-                      // ElevatedButton(
-                      //   child: const Text('Close'),
-
-                      //   onPressed: () => Navigator.pop(context),
-                      // ),
-                    ],
-                  ),
                 ),
     );
   }

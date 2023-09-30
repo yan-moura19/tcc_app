@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcc_app/widgets/modal.dart';
 import '../widgets/perfilVertical.dart';
 import '../widgets/perfilHorizontal.dart';
 
@@ -18,7 +19,17 @@ class Screen4 extends StatelessWidget {
               ),
               new SizedBox(
                 height: 150,
-                child: ListPerfilHorizontal(),
+                child: ListPerfilHorizontal(onSubmit: (p0) => {
+                  showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return SizedBox(
+                height: 200,
+                child: ModalWidget(objeto: p0),
+              );
+            },
+          )
+                },),
               ),
               new Text("Em alta",
                 textAlign: TextAlign.right,),
@@ -29,19 +40,7 @@ class Screen4 extends StatelessWidget {
             builder: (BuildContext context) {
               return SizedBox(
                 height: 200,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const Text('Modal BottomSheet'),
-                      ElevatedButton(
-                        child: const Text('Close BottomSheet'),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    ],
-                  ),
-                ),
+                child: ModalWidget(objeto: p0),
               );
             },
           )
