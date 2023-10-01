@@ -34,8 +34,8 @@ class _Screen3State extends State<Screen3> {
         visible: !usuarioSalvo,
         child: Container(
           child: LoginForm(onSubmit: (login) {
-            print("-------");
-            print(login);
+            
+            fazLogin(login);
           },),
         ),
       )
@@ -43,6 +43,24 @@ class _Screen3State extends State<Screen3> {
     ],
   );
   }
+}
+
+fazLogin(bodyLogin) async {
+  var url = Uri.parse('http://localhost:3000/api/Auth/login');
+  final encoding = Encoding.getByName('utf-8');
+  final headers = <String, String>{
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  var body = bodyLogin;
+  body = json.encode(body);
+  var response =
+  await http.post(url, body: body, encoding: encoding, headers: headers);
+  if (response.statusCode == 200) {
+    print(response.body);
+  } else {
+    throw Exception('erro');
+  }
+
 }
 
 postUsuario(bodyPost) async {
