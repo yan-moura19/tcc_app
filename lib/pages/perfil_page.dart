@@ -4,18 +4,44 @@ import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:tcc_app/widgets/form.dart';
+import 'package:tcc_app/widgets/loginForm.dart';
+class Screen3 extends StatefulWidget {
+  @override
+  _Screen3State createState() => _Screen3State();
+}
 
-class Screen3 extends StatelessWidget {
+class _Screen3State extends State<Screen3> {
+  bool usuarioSalvo = false;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(child: 
-      CustomForm(onSubmit: (FormData) {
+    return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Visibility(
+        visible: usuarioSalvo,
+        child: Container(
+          child:  CustomForm(onSubmit: (FormData) {
        
         postUsuario(FormData);
       }),
+      ),
+        ),
+      
+      Visibility(
+
+        visible: !usuarioSalvo,
+        child: Container(
+          child: LoginForm(onSubmit: (login) {
+            print("-------");
+            print(login);
+          },),
+        ),
       )
-    );
+      ,
+    ],
+  );
   }
 }
 
