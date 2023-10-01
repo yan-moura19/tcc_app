@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter/material.dart';
 import 'package:tcc_app/widgets/form.dart';
@@ -11,7 +12,17 @@ class Screen3 extends StatefulWidget {
 }
 
 class _Screen3State extends State<Screen3> {
+  @override
   bool usuarioSalvo = false;
+  var auth;
+void initState() {
+    super.initState();
+
+    // Chame a função desejada ao iniciar a tela
+    // auth = recuperarValorDoSharedPreferences();
+    // print(auth);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +68,31 @@ fazLogin(bodyLogin) async {
   await http.post(url, body: body, encoding: encoding, headers: headers);
   if (response.statusCode == 200) {
     print(response.body);
+    
   } else {
     throw Exception('erro');
   }
 
+}
+salvaLogin(body) async {
+  final prefs = await SharedPreferences.getInstance();
+  final chave = 'auth'; 
+  
+  var valorString = json.encode(body);
+  
+  await prefs.setString(chave, valorString);
+  print('Valor salvo no SharedPreferences: $valorString');
+}
+Future<String?> recuperarValorDoSharedPreferences() async {
+  final prefs = await SharedPreferences.getInstance();
+  final chave = 'auth';
+  
+  
+  final valor = prefs.getString(chave);
+  
+  print('Valor recuperado do SharedPreferences: $valor');
+  
+  return valor;
 }
 
 postUsuario(bodyPost) async {
