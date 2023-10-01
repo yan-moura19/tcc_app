@@ -9,9 +9,9 @@ class Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Expanded(child: 
+      child: Container(child: 
       CustomForm(onSubmit: (FormData) {
-        print(FormData);
+       
         postUsuario(FormData);
       }),
       )
