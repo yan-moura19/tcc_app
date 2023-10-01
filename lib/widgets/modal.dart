@@ -23,10 +23,7 @@ class _ModalWidgetState extends State<ModalWidget> {
 
       body: SizedBox(
         height: double.infinity,
-       
-        
                   child: Card(
-                        
                         child: ListTile(
                         title: Text('${widget.objeto['nome']}'),
                         leading: Text("IMG"),
@@ -41,7 +38,6 @@ class _ModalWidgetState extends State<ModalWidget> {
                         trailing: TextButton.icon(onPressed: (){print("link/${widget.objeto['parceria']['usuario']}");}, icon:Icon(
                       FontAwesomeIcons.instagram,
                       size: 40,
-                      
                     ), label: Text("Visitar Perfil"),)
                       )),
                 ),

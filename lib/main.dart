@@ -6,6 +6,7 @@ import 'package:tcc_app/pages/home_page.dart';
 import 'package:tcc_app/pages/categorias_page.dart';
 import 'package:tcc_app/pages/perfil_page.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
