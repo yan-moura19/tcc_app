@@ -62,10 +62,11 @@ class _MainScreenState extends State<MainScreen> {
       //     ],
       // ),
       body: screens[currentIndex],
+      backgroundColor: Color.fromARGB(255, 252, 252, 252),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: true,
-        backgroundColor: Color(0xFF102A75),
+        backgroundColor:Color.fromARGB(255, 157, 203, 240),
         selectedItemColor: Color(0xFF6C8EF4),
         unselectedItemColor: Color(0xFF324373),
         currentIndex: currentIndex,

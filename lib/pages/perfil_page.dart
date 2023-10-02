@@ -18,9 +18,7 @@ class _Screen3State extends State<Screen3> {
 void initState() {
     super.initState();
 
-    // Chame a função desejada ao iniciar a tela
-    // auth = recuperarValorDoSharedPreferences();
-    // print(auth);
+    
   }
 
 
@@ -30,27 +28,18 @@ void initState() {
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Visibility(
-        visible: usuarioSalvo,
-        child: Container(
-          child:  CustomForm(onSubmit: (FormData) {
+      if(usuarioSalvo)CustomForm(onSubmit: (FormData) {
        
         postUsuario(FormData);
       }),
-      ),
-        ),
-      
-      Visibility(
-
-        visible: !usuarioSalvo,
-        child: Container(
-          child: LoginForm(onSubmit: (login) {
+      if(!usuarioSalvo)LoginForm(onSubmit: (login) {
             
             fazLogin(login);
           },),
-        ),
-      )
-      ,
+      
+      
+      
+      
     ],
   );
   }

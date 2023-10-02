@@ -50,7 +50,7 @@ class _Screen2State extends State<Screen2> {
         parceiroFiltrados.add(parceiro);
       }
 
-      // Certifique-se de que 'data' seja uma lista, se necessário
+    
       
     });
     } else {
@@ -103,7 +103,7 @@ class _Screen2State extends State<Screen2> {
            
             itemBuilder: (context, index) {
                if (parceiroFiltrados == null) {
-                  // Se a lista for nula, retorne um widget Text
+                 
                   return Text("A lista de parceiros é nula.");
                 } else {
                   var parceiro = parceiroFiltrados[index];

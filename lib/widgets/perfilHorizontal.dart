@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
 
@@ -36,13 +37,25 @@ class _ListPerfilHorizontalState extends State<ListPerfilHorizontal> {
                       widget.onSubmit(usuario);
                   }),
                   
-                  title: Text('Categoria: ${usuario['nome']} '),
+                  title: Text('Categoria: ${usuario['nome']} ',style: GoogleFonts.montserrat(
+                fontSize: 16,
+                
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),),
                   subtitle:
-                     Text('Preco: ${usuario['imagem']}'), 
+                     Text('Preco: ${usuario['imagem']}',style: GoogleFonts.montserrat(
+                fontSize: 16,
+                
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),), 
                 )));
               }));
         } else if (snapshot.hasError) {
-          return Center(child: Text('${snapshot.error}'));
+          return Center(child: Text('${snapshot.error}',style: GoogleFonts.montserrat(
+                fontSize: 16,
+                
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),));
         }
         return const Center(
           child: CircularProgressIndicator(),

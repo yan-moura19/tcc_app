@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,11 @@ class _ListPerfilVerticalState extends State<ListPerfilVertical> {
                     widget.onSubmit(usuario);
                   }),
                   
-                  title: Text(usuario['nome']),
+                  title: Text(usuario['nome'],style: GoogleFonts.montserrat(
+                fontSize: 16,
+                
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),),
                   subtitle: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -40,14 +45,22 @@ class _ListPerfilVerticalState extends State<ListPerfilVertical> {
                         children: [
                           Row(
                             children: [
-                              Text('Categoria: '),
-                              Text(usuario['nome']),
+                              Text('Categoria: ${usuario['nome']}',style: GoogleFonts.montserrat(
+                fontSize: 16,
+                
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),),
+                             
                             ],
                           ),
                           Row(
                             children: [
-                              Text('Preco: '),
-                              Text(usuario['imagem']),
+                              Text('Preco: ${usuario['imagem']}',style: GoogleFonts.montserrat(
+                fontSize: 16,
+                
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),),
+                              
                             ],
                             mainAxisAlignment: MainAxisAlignment.end,
                           )

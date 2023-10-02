@@ -54,10 +54,19 @@ class _CustomFormState extends State<CustomForm> {
     return Form(
         key: _formKey,
         child: Container(
-          color: Colors.white,
+          padding: EdgeInsets.all(20),
+      margin:   EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 157, 203, 240),
+        borderRadius: BorderRadius.circular(10),
+
+        
+      ),
+          
           constraints: BoxConstraints(
-             ), // Ajuste a largura máxima conforme necessário
+             ),
           child: ListView(
+            shrinkWrap: true,
             children: [
               SizedBox(width: 5, height: 15),
               TextFormField(
@@ -147,10 +156,10 @@ class _CustomFormState extends State<CustomForm> {
                if (_isParceiro ?? true)DropdownMenu<String>(
                 initialSelection: categories.first,
                 onSelected: (String? value) {
-                  // This is called when the user selects an item.
+                  
                   setState(() {
                     _categoria = value!;
-                    print(value!);
+                
                   });
                 },
                 dropdownMenuEntries: categories.map<DropdownMenuEntry<String>>((String value) {
